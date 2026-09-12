@@ -144,7 +144,7 @@ São permitidas conexões:
 
 A instância também possui permissões IAM para enviar mensagens para a fila SQS.
 
-> **Observação:** a abertura de SSH para `0.0.0.0/0` foi utilizada neste projeto para fins de laboratório. Em um ambiente de produção, o acesso SSH deve ser restringido a endereços IP confiáveis ou substituído por mecanismos mais seguros.
+**Observação:** a abertura de SSH para `0.0.0.0/0` foi utilizada neste projeto para fins de laboratório. Em um ambiente de produção, o acesso SSH deve ser restringido a endereços IP confiáveis ou substituído por mecanismos mais seguros.
 
 ---
 
@@ -459,7 +459,7 @@ Evidência do processamento automático do pedido pela Lambda e registro no Clou
 
 Diagrama da arquitetura implementada:
 
-*Diagrama criado por Inteligência Artificial 
+**Observação:** Diagrama criado por Inteligência Artificial
 
 ![Arquitetura do projeto](evidencias/05-arquitetura.png)
 
