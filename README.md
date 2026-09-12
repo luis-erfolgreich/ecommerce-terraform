@@ -1,8 +1,8 @@
-# 🛒 E-commerce AWS com Terraform
+# E-commerce AWS com Terraform
 
 Projeto de infraestrutura em nuvem desenvolvido com **Terraform**, utilizando serviços da **Amazon Web Services (AWS)** para simular uma arquitetura de e-commerce baseada em APIs, processamento assíncrono e arquitetura serverless.
 
-## 📌 Sobre o projeto
+## Sobre o projeto
 
 O objetivo deste projeto é provisionar, através de **Infrastructure as Code (IaC)**, uma infraestrutura AWS capaz de executar duas APIs e processar pedidos de forma assíncrona.
 
@@ -14,7 +14,7 @@ Toda a infraestrutura é criada e gerenciada utilizando Terraform.
 
 ---
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 A solução é composta pelos seguintes componentes:
 
@@ -52,7 +52,7 @@ EC2
 
 
 ---
-## 🧰 Tecnologias utilizadas
+## Tecnologias utilizadas
 
 * Terraform
 * AWS
@@ -68,7 +68,7 @@ EC2
 
 ---
 
-## 📁 Estrutura do projeto
+## Estrutura do projeto
 
 ```text
 ecommerce-terraform/
@@ -103,7 +103,7 @@ ecommerce-terraform/
 
 ---
 
-## ☁️ Recursos provisionados
+## Recursos provisionados
 
 ### Rede
 
@@ -131,7 +131,7 @@ A subnet pública utiliza:
 
 ---
 
-### 🔐 Segurança
+### Segurança
 
 O arquivo `security.tf` cria o Security Group utilizado pela instância EC2.
 
@@ -148,7 +148,7 @@ A instância também possui permissões IAM para enviar mensagens para a fila SQ
 
 ---
 
-## 💻 EC2 e APIs
+## EC2 e APIs
 
 A instância EC2 utiliza **Amazon Linux 2023** e é provisionada automaticamente pelo Terraform.
 
@@ -212,7 +212,7 @@ A API envia o pedido para a fila SQS.
 
 ---
 
-## 📩 Processamento assíncrono com SQS
+## Processamento assíncrono com SQS
 
 A fila utilizada pelo projeto é:
 
@@ -236,7 +236,7 @@ Esse modelo permite separar o recebimento do pedido do seu processamento.
 
 ---
 
-## ⚡ AWS Lambda
+## AWS Lambda
 
 A Lambda é responsável por consumir as mensagens da fila SQS.
 
@@ -259,7 +259,7 @@ O pacote da Lambda é gerado automaticamente pelo Terraform utilizando o provide
 
 ---
 
-## 📊 CloudWatch Logs
+## CloudWatch Logs
 
 As execuções da Lambda são registradas automaticamente no Amazon CloudWatch Logs.
 
@@ -273,7 +273,7 @@ A retenção configurada para os logs é de **7 dias**.
 
 ---
 
-# 🚀 Como executar o projeto
+# Como executar o projeto
 
 ## 1. Pré-requisitos
 
@@ -351,7 +351,7 @@ Ao final, o Terraform apresenta os outputs, incluindo o IP público da EC2 e a U
 
 ---
 
-# 🌐 Como acessar a aplicação
+# Como acessar a aplicação
 
 Após o `terraform apply`, obtenha o IP público da EC2:
 
@@ -375,7 +375,7 @@ curl -X POST http://IP_DA_EC2/pedidos \
 
 ---
 
-# 🔄 Testando o fluxo completo
+# Testando o fluxo completo
 
 O fluxo pode ser validado seguindo estas etapas:
 
@@ -421,7 +421,7 @@ CloudWatch Logs
 
 ---
 
-# 📸 Evidências
+# Evidências
 
 ## Terraform Apply
 
@@ -458,6 +458,7 @@ Evidência do processamento automático do pedido pela Lambda e registro no Clou
 ## Arquitetura
 
 Diagrama da arquitetura implementada:
+*Diagrama criado por Inteligência Artificial 
 
 ![Arquitetura do projeto](evidencias/05-arquitetura.png)
 
@@ -481,7 +482,7 @@ evidencias/06-terraform-destroy.png
 
 ---
 
-# 🧹 Encerramento da infraestrutura
+# Encerramento da infraestrutura
 
 Para evitar custos desnecessários após os testes:
 
@@ -495,7 +496,7 @@ O comando remove os recursos provisionados pelo Terraform.
 
 ---
 
-# 🎯 Conclusão
+# Conclusão
 
 Este projeto demonstra a utilização de **Infrastructure as Code (IaC)** com Terraform para provisionar uma infraestrutura AWS completa.
 
