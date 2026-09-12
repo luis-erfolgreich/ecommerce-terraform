@@ -458,6 +458,7 @@ Evidência do processamento automático do pedido pela Lambda e registro no Clou
 ## Arquitetura
 
 Diagrama da arquitetura implementada:
+
 *Diagrama criado por Inteligência Artificial 
 
 ![Arquitetura do projeto](evidencias/05-arquitetura.png)
