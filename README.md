@@ -4,7 +4,7 @@ Projeto de infraestrutura em nuvem desenvolvido com **Terraform**, utilizando se
 
 ## Sobre o projeto
 
-O projeto faz parte da atividade final do módulo avançado do Capacita iRede. 
+O projeto faz parte da atividade final do módulo avançado do **Capacita iRede**. 
 Para concluir esta etapa da formação e avançar para a próxima fase da jornada, o estudante foi desafiado a atuar como desenvolvedor de infraestrutura na construção de uma solução de e-commerce na AWS.
 O foco principal do projeto é criar toda a infraestrutura utilizando **Infraestrutura como Código (Terraform)**, simulando uma arquitetura moderna baseada em microsserviços e comunicação assíncrona.
 O objetivo é projetar e implementar uma infraestrutura capaz de suportar duas aplicações: uma API de Produtos e uma API de Pedidos. Além disso, a solução deverá contemplar um fluxo simples de mensageria entre os serviços.
