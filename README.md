@@ -501,6 +501,8 @@ O `terraform destroy` deve ser executado somente após a coleta de todas as evid
 
 Este projeto demonstra a utilização de **Infrastructure as Code (IaC)** com Terraform para provisionar uma infraestrutura AWS completa.
 
+Ele também reforça a importância da automação e da padronização da infraestrutura por meio de código, permitindo que os recursos sejam provisionados, validados e posteriormente removidos de forma controlada utilizando o Terraform. Além de atender aos requisitos propostos, a atividade dá oportunidade de consolidar conhecimentos práticos em Cloud Computing e AWS, desenvolvendo uma visão mais completa sobre como diferentes serviços podem ser integrados para construir uma aplicação baseada em nuvem.
+
 A solução integra computação, rede, segurança, mensageria, processamento serverless e monitoramento:
 
 ```text
