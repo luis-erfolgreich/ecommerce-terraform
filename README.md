@@ -10,13 +10,15 @@ A arquitetura implementada utiliza:
 
 **Usuário → EC2 → SQS → Lambda → CloudWatch Logs**
 
-Toda a infraestrutura é criada e gerenciada utilizando Terraform.
+Toda a infraestrutura é criada e gerenciada utilizando Terraform, permitindo que os recursos fossem criados de maneira automatizada e reproduzível.
 
 ---
 
 ## Arquitetura
 
-A solução é composta pelos seguintes componentes:
+A solução desenvolvida consiste em uma arquitetura de e-commerce hospedada na AWS, provisionada integralmente utilizando Terraform, seguindo o conceito de Infrastructure as Code (IaC). 
+Ela foi projetada para demonstrar a integração entre serviços de computação, rede, mensageria, processamento serverless e monitoramento.
+É composta pelos seguintes componentes:
 
 * **Amazon VPC** — rede virtual do projeto
 * **Subnet pública** — permite acesso à aplicação
@@ -107,6 +109,12 @@ ecommerce-terraform/
 
 ### Rede
 
+A infraestrutura é iniciada por uma Amazon VPC, responsável por fornecer uma rede virtual isolada para os recursos da aplicação.
+Dentro da VPC foi criada uma subnet pública, configurada para atribuir endereços IP públicos às instâncias. 
+Para permitir a comunicação entre a infraestrutura e a Internet, foi utilizado um Internet Gateway.
+Também foi criada uma Route Table contendo uma rota padrão (0.0.0.0/0) direcionada ao Internet Gateway. 
+Essa configuração permite que a instância EC2 receba requisições externas e tenha conectividade com a Internet.
+
 A infraestrutura de rede é criada através do arquivo `vpc.tf`.
 
 São provisionados:
@@ -133,6 +141,7 @@ A subnet pública utiliza:
 
 ### Segurança
 
+Foi configurado um Security Group associado à instância EC2 para controlar o tráfego de entrada e saída.
 O arquivo `security.tf` cria o Security Group utilizado pela instância EC2.
 
 São permitidas conexões:
@@ -149,6 +158,15 @@ A instância também possui permissões IAM para enviar mensagens para a fila SQ
 ---
 
 ## EC2 e APIs
+
+A camada de computação utiliza uma instância Amazon EC2, provisionada automaticamente pelo Terraform.
+A instância executa duas APIs desenvolvidas em Python com Flask:
+API de Produtos: disponibiliza uma lista de produtos por meio de uma requisição HTTP.
+API de Pedidos: recebe os dados de um pedido e encaminha essas informações para a fila SQS.
+
+Dessa forma:
+/produtos → API de Produtos
+/pedidos → API de Pedidos
 
 A instância EC2 utiliza **Amazon Linux 2023** e é provisionada automaticamente pelo Terraform.
 
@@ -214,6 +232,10 @@ A API envia o pedido para a fila SQS.
 
 ## Processamento assíncrono com SQS
 
+A Amazon Simple Queue Service (SQS) foi utilizada como mecanismo de mensageria assíncrona entre a API de pedidos e a função Lambda.
+A utilização do SQS permite desacoplar o recebimento do pedido do seu processamento posterior. 
+Dessa forma, a API não precisa executar diretamente o processamento realizado pela Lambda.
+
 A fila utilizada pelo projeto é:
 
 ```text
@@ -238,9 +260,10 @@ Esse modelo permite separar o recebimento do pedido do seu processamento.
 
 ## AWS Lambda
 
-A Lambda é responsável por consumir as mensagens da fila SQS.
-
-A função recebe os eventos enviados pelo SQS e registra os pedidos nos logs.
+A AWS Lambda é responsável por consumir e processar as mensagens disponibilizadas na fila SQS.
+Ela foi configurada no Terraform com um trigger do SQS. Quando uma nova mensagem é disponibilizada na fila, a AWS aciona automaticamente a função Lambda.
+A função recebe o evento, extrai os dados do pedido e registra as informações no log, simulando o processamento de um pedido de e-commerce.
+Ela recebe os eventos enviados pelo SQS e registra os pedidos nos logs.
 
 Exemplo:
 
@@ -261,6 +284,9 @@ O pacote da Lambda é gerado automaticamente pelo Terraform utilizando o provide
 
 ## CloudWatch Logs
 
+Os registros gerados pela função Lambda são armazenados no Amazon CloudWatch Logs.
+Essa integração permite acompanhar a execução da função e verificar se as mensagens enviadas pela API estão sendo processadas corretamente.
+Durante os testes, foi possível observar no CloudWatch os dados dos pedidos recebidos pela Lambda, comprovando o funcionamento do fluxo assíncrono.
 As execuções da Lambda são registradas automaticamente no Amazon CloudWatch Logs.
 
 O projeto cria o grupo:
