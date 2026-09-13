@@ -474,12 +474,12 @@ terraform destroy
 
 Confirme digitando:
 
-```text
 yes
 ```
 
 A evidência da destruição da infraestrutura:
-evidencias/06-terraform-destroy.png
+
+![Terraform Destroy](evidencias/06-terraform-destroy.png)
 
 ---
 
@@ -493,7 +493,7 @@ terraform destroy
 
 O comando remove os recursos provisionados pelo Terraform.
 
-> O `terraform destroy` deve ser executado somente após a coleta de todas as evidências necessárias.
+O `terraform destroy` deve ser executado somente após a coleta de todas as evidências necessárias.
 
 ---
 
